@@ -1,6 +1,9 @@
 import React from 'react';
 
-function Welcome() {
+function Welcome(props) {
+    function redirectToLogin(evt) {
+        props.history.push('/login')
+    }
   return (
     <div>
         <head>
@@ -9,7 +12,7 @@ function Welcome() {
         <body>
             <div class="topbar">
                 <img  class="brand" src="assets/images/logo.png" alt="logo"/>
-                <div class="member btn">
+                <div class="member btn" onClick={redirectToLogin}>
                     Already A Member?
                 </div>
             </div>
