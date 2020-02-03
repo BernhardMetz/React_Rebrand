@@ -1,0 +1,180 @@
+.topbar{
+    margin-bottom: 32px;
+}
+
+
+
+
+.welcome .top{
+    text-align: center;
+}
+.welcome .top .first{
+    text-align: center;
+    font: Bold 50px/54px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: capitalize;
+}
+.welcome .top .second{
+    text-align: center;
+    font: Bold 50px/54px Montserrat;
+    letter-spacing: 0;
+    color: #F5B134;
+    text-transform: capitalize;
+}
+.welcome .bottom{
+    text-align: center;
+    font: 400 30px/36px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+
+
+
+.order{
+    background: #FAB535 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+    width:536px;
+    margin:0 auto;
+    margin-top: 61px;
+    text-align: center;
+    padding-bottom:72.5px;
+}
+.order .advanced{
+    text-align: center;
+    font: 400 57px/69px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    margin:0 auto;
+    padding-top:42px;
+}
+
+.order .fee{
+    margin:0 auto;
+    text-align: center;
+    display: inline-block;
+}
+
+.order .fee .number{
+    text-align: left;
+    font: Bold 81px/98px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    float:left;
+}
+.order .fee .duration{
+    float:left;
+    margin-top:36px;
+    margin-bottom:14px;
+    text-align: left;
+    font: Bold 20px/24px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+    width: 69px;
+    height: 48px;
+}
+
+.order .line1{
+    border: 1px solid #FFFFFF;
+    opacity: 1;
+    width: 468px;
+    height: 0px;
+    margin:0 auto;
+    margin-top:41.5px;
+}
+.order .line2{
+    border: 1px solid #FFFFFF;
+    opacity: 1;
+    width: 468px;
+    height: 0px;
+    margin:0 auto;
+    margin-top:55.5px;
+}
+.order .description{
+    text-align: center;
+    font: 400 22px/27px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+}
+.order .description .lisence{
+    margin:0 auto;
+    margin-top: 65.5px;
+    text-align: center;
+}
+.order .description .email{
+    margin:0 auto;
+    margin-top:62px;
+}
+.order .description .role{
+    margin:0 auto;
+    margin-top:62px;
+}
+.order .description .feature{
+    margin:0 auto;
+    margin-top:73px;
+}
+
+.order .button_order{
+    
+    text-align: center;
+    font: Bold 20px/24px Montserrat;
+    letter-spacing: 0;
+    color: #FAB535;
+    text-transform: capitalize;
+    opacity: 1;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+    padding:20.48px 96.78px 20.48px 99.22px;
+    display: inline-block;
+    margin:0 auto;
+    margin-top: 72px;
+}
+
+
+
+
+
+.footer{
+    background: #FAB535 0% 0% no-repeat padding-box;
+    opacity: 1;
+    margin-top:151px;
+    padding-top: 73px;
+    padding-bottom: 82px;
+}
+.footer .customer_service{
+    margin-left:80px;
+    text-align: left;
+    font: Bold 20px/16px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    opacity: 1;
+}
+.footer .faq_policy{
+    margin-left:80px;
+    margin-top:28px;
+    text-align: left;
+    font: 400 20px/31px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+    width: 167px;
+    height: 117px;
+}
+.footer .copyright{
+    text-align: right;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-right: 84px;
+}

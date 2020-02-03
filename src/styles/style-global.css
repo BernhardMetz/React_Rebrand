@@ -1,0 +1,42 @@
+body{
+    background-color: #010203;
+}
+
+.topbar{
+    margin-top:32px;
+    padding-left:100px;
+    padding-right:100px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.clear{
+    clear:both;
+}
+
+.member{
+    background: #FAB535 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    opacity: 1;
+    padding:19px 21px 16px 25px;
+    font: Bold 25px/30px Montserrat;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    margin-left:auto;
+}
+
+.container{
+    max-width: 1920px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.brand {
+    width: 130px;
+    height: 30px;
+}
+.btn{
+    cursor: pointer;
+}
