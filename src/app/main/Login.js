@@ -1,37 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function Login() {
-  return (
-    <div>
-        <head>
+function Login(props) {
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+    async function handleLogin(evt) {
+        const reqUrl = 'http://localhost:3001/api/login'
+        let postData = {}
+        postData.email = email
+        postData.password = password
+        try {
+            let res = await axios.post(reqUrl, postData)
+            if (res.data && res.data.email) {
+                props.history.push('/accountdashboard')
+            }
+        } catch(err) {
+            console.log(err)
+            alert("Incorrect email or password")
+        }
+    }
+
+    function handleEmailChange(evt) {
+        setEmail(evt.target.value)
+    }
+
+    function handlePassChange(evt) {
+        setPassword(evt.target.value)
+    }
+
+    return (
+        <div>
             <link href="https://fonts.googleapis.com/css?family=Montserrat:Bold,100,200,300,400,500,600,700,800,900" rel="stylesheet" />
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        </head>
-        <body>
-            <div class="topbar">
-                <img class="brand" src="assets/images/logo.png" alt="logo"/>
+            <div className="topbar">
+                <img className="brand" src="assets/images/logo.png" alt="logo"/>
             </div>
-            <div class="container">
-                <div class="login_form">
-                    <input type="text" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <div class="btn_login">
+            <div className="container">
+                <div className="login_form">
+                    <input type="text" placeholder="Email" onChange={handleEmailChange} />
+                    <input type="password" placeholder="Password" onChange={handlePassChange} />
+                    <div className="btn_login" onClick={handleLogin}>
                         login
                     </div>
-                    <div class="forgot_pass btn">
+                    <div className="forgot_pass btn">
                         Forgot password?
                     </div>
-                    <div class="term_condition">
+                    <div className="term_condition">
                         <input type="checkbox" />
                         <span>I agree to the terms & conditions</span>
                     </div>
                 </div>
             </div>
-        </body>
-    </div>      
-  );
+        </div>      
+    );
 }
 
 export default Login;

@@ -1,84 +1,82 @@
 import React from 'react';
 
 function Welcome(props) {
+
     function redirectToLogin(evt) {
         props.history.push('/login')
     }
-  return (
-    <div>
-        <head>
+
+    return (
+        <div>
             <link href="https://fonts.googleapis.com/css?family=Montserrat:Bold,100,200,300,400,500,600,700,800,900" rel="stylesheet" />
-        </head>
-        <body>
-            <div class="topbar">
-                <img  class="brand" src="assets/images/logo.png" alt="logo"/>
-                <div class="member btn" onClick={redirectToLogin}>
+            <div className="topbar">
+                <img  className="brand" src="assets/images/logo.png" alt="logo"/>
+                <div className="member btn" onClick={redirectToLogin}>
                     Already A Member?
                 </div>
             </div>
-            <div class="container">
-                <div class="welcome">
-                    <div class="top">
-                        <span class="first">Welcome To</span>
-                        <span class="second">Beta 3.0</span>
+            <div className="container">
+                <div className="welcome">
+                    <div className="top">
+                        <span className="first">Welcome To</span>
+                        <span className="second">Beta 3.0</span>
                     </div>
-                    <div class="bottom">
+                    <div className="bottom">
                         More options coming soon!
                     </div>
                 </div>
-                <div class="order">
-                    <div class="advanced">
+                <div className="order">
+                    <div className="advanced">
                         ADVANCED
                     </div>
-                    <div class="fee">
-                        <span class="number">
+                    <div className="fee">
+                        <span className="number">
                             $45.99
                         </span>
-                        <span class="duration">
+                        <span className="duration">
                             Per Month
                         </span>
-                        <div class="clear">
+                        <div className="clear">
 
                         </div>
                     </div>
-                    <div class="line1"></div>
-                    <div class="description">
-                        <div class="lisence">
+                    <div className="line1"></div>
+                    <div className="description">
+                        <div className="lisence">
                             Full Adobe Creative Cloud Lisence
                         </div>
-                        <div class="email">
+                        <div className="email">
                             Professional @RebrandDigital.com Email
                         </div>
-                        <div class="role">
+                        <div className="role">
                             Supporter Role In Discord
                         </div>
-                        <div class="feature">
+                        <div className="feature">
                             More Features Coming Soon
                         </div>
                     </div>
-                    <div class="line2"></div>
-                    <div class="button_order btn">
+                    <div className="line2"></div>
+                    <div className="button_order btn">
                         order now
                     </div>
-                    <div class="clear">
+                    <div className="clear">
                     
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div class="customer_service">
+            <div className="footer">
+                <div className="customer_service">
                     CUSTOMER SERVICE
                 </div>
-                <div class="faq_policy">
+                <div className="faq_policy">
                     Account FAQ Terms Of Service Privacy Policy
                 </div>
-                <div class="copyright">
+                <div className="copyright">
                     © Inventa LLC
                 </div>
             </div>
-        </body>
-    </div>      
-  );
+        </div>      
+    );
 }
 
 export default Welcome;
