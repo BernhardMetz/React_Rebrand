@@ -30,107 +30,50 @@ function AccountDashboard() {
                     Already A Member?
                 </div>
             </div>
-            <div className="title">
-                Account Dashboard
+            <div className="signup-title">
+                Purchase
             </div>
             <div className="container">
                 <div className="tabs">
-                    {tabIndex === 0 &&
-                    <div className="header">
-
-                        <span className="active" id="tab1" onClick={handleTab}>Account</span>
-                        <span className="" id="tab2" onClick={handleTab}>Email</span>
-                        <span className="" id="tab3" onClick={handleTab}>Billing</span>
-                    </div>}
-                    {tabIndex === 1 &&
-                    <div className="header">
-
-                        <span className="" id="tab1" onClick={handleTab}>Account</span>
-                        <span className="active" id="tab2" onClick={handleTab}>Email</span>
-                        <span className="" id="tab3" onClick={handleTab}>Billing</span>
-                    </div>}
-                    {tabIndex === 2 &&
-                    <div className="header">
-
-                        <span className="" id="tab1" onClick={handleTab}>Account</span>
-                        <span className="" id="tab2" onClick={handleTab}>Email</span>
-                        <span className="active" id="tab3" onClick={handleTab}>Billing</span>
-                    </div>}
-                    <div className="content">
-                    {tabIndex === 0 &&     
-                        <div className="account active" id="tab1C">
+                    <div className="signup-header">
+                        <span className="active">Advanced Membership</span>
+                    </div>
+                    <div className="signup-content">
+                        <div className="account active">
                             <div>
-                                Email Address:
+                                First Name*
                             </div>
-                            <div className="smallfont">
-                                {user.email}
+                            <input type="text" placeholder="First Name" />
+
+                            <div className="mt">
+                                Last Name*
                             </div>
-                            <div>
-                                Discord ID:
+                            <input type="text" placeholder="Last Name" />
+                            
+                            <div className="mt">
+                                Discord Id
                             </div>
-                            <div className="smallfont">
-                                {user.discordid}
+                            <input type="text" placeholder="User#0001" />
+                            
+                            <div className="mt">
+                                Email*
                             </div>
-                            <div>
-                                Change Password:
+                            <input type="text" placeholder="Example@Email.Com" />
+                            
+                            <div className="mt">
+                                Password*
                             </div>
-                            <input type="text" placeholder="Current Password" />
-                            <input type="password" placeholder="New Password" />
-                            <input type="password" placeholder="Confirm New Password" />
+                            <input type="password" placeholder="Password" />
+                            
+                            <div className="mt">
+                                Confirm Password*
+                            </div>
+                            <input type="password" placeholder="Password" />
                             <div className="button_submit btn">
-                                Submit
+                                Purchase
                             </div>
-                            <div className="clear">
-
-                            </div>
-                        </div>}
-                    {tabIndex === 1 &&
-                        <div className="email active" id="tab2C">
-
-                        </div>}
-                    {tabIndex === 2 &&   
-                        <div className="billing active" id="tab3C">
-                            <div style={{marginTop: '30px'}}>
-                                Cost for billing period:
-                            </div>
-                            <div className="price">
-                                $45.99
-                            </div>
-                            <div className="pay_btns">
-                                <div className="btn pay_now_btn smallfont">
-                                    Pay Now
-                                </div>
-                                <div>
-                                    or*
-                                </div>
-                                <div className="btn past_due_btn smallfont">
-                                    Past Due
-                                </div>
-                            </div>
-                            <div style={{marginTop: '30px'}}>
-                                Past Payments:
-                            </div>
-                            <div className="pay_invocie">
-                                <span>$45.99</span>
-                                <span>01/26/2020</span>
-                                <span>View Receipt</span>
-                            </div>
-                            <div className="pay_invocie">
-                                <span>$45.99</span>
-                                <span>01/26/2020</span>
-                                <span>View Receipt</span>
-                            </div>
-                            <div className="pay_invocie">
-                                <span>$45.99</span>
-                                <span>01/26/2020</span>
-                                <span>View Receipt</span>
-                            </div>
-                            <div className="pay_invocie">
-                                <span>$45.99</span>
-                                <span>01/26/2020</span>
-                                <span>View Receipt</span>
-                            </div>
-                        </div>}
+                        </div>
+                    
                     </div>
                 </div>
             </div>
