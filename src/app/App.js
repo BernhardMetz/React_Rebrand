@@ -1,11 +1,13 @@
 import React from 'react';
 import RouteCongif from './RouteConfig'
+import Provider from 'react-redux/es/components/Provider';
+import store from './store';
 
 function App() {
   return (
-    <RouteCongif>
-      
-    </RouteCongif>  
+    <Provider store={store}>
+      <RouteCongif />    
+    </Provider>
   );
 }
 

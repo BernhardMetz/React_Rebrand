@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import * as Actions from '../store/actions'; 
+import withReducer from '../store/withReducer';
+import reducer from '../store/reducers';
 
 function Login(props) {
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -14,8 +20,11 @@ function Login(props) {
         try {
             let res = await axios.post(reqUrl, postData)
             if (res.data && res.data.email) {
+                dispatch(Actions.setUserData(res.data))
                 props.history.push('/accountdashboard')
-            }
+            } else {
+                alert(res.data.message)
+            } 
         } catch(err) {
             console.log(err)
             alert("Incorrect email or password")
@@ -59,4 +68,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default withReducer('Login', reducer)(Login);;
