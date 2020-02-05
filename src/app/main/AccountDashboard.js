@@ -9,7 +9,8 @@ function AccountDashboard(props) {
     const [oldPass, setOldPass] = useState()
     const [newPass, setNewPass] = useState()
     const [newConfirm, setNewConfirm] = useState()
-
+    if (!user.email)
+        props.history.push('/login')
     function handleTab(evt) {
         if (evt.target.id === 'tab1') {
             setTabIndex(0)
