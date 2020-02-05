@@ -1,16 +1,42 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import * as Actions from '../store/actions'; 
 
 function AccountDashboard(props) {
 
+    const dispatch = useDispatch();
     const [tabIndex, setTabIndex] = useState(0)
     const user = useSelector(state => state.user)
     const [oldPass, setOldPass] = useState()
     const [newPass, setNewPass] = useState()
     const [newConfirm, setNewConfirm] = useState()
-    if (!user.email)
-        props.history.push('/login')
+
+    async function initialize() {
+        if (!user.email) {
+            const reqUrl = 'http://localhost:3001/api/user/me'
+            let postData = {}
+            postData.token = window.localStorage.getItem('token')
+            try {
+                let res = await axios.post(reqUrl, postData)
+                if (res.data && res.data.user && res.data.user.email) {
+                    return dispatch(Actions.setUserData(res.data.user))
+                } else {
+                    props.history.push('/login')
+                    alert(res.data.message)
+                } 
+            } catch(err) {
+                props.history.push('/login')
+                console.log(err)
+                alert("Auth issue! Please login again.")
+            }
+        }
+
+    }
+
+    initialize()
+    
     function handleTab(evt) {
         if (evt.target.id === 'tab1') {
             setTabIndex(0)

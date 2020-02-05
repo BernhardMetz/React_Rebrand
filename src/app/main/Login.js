@@ -19,8 +19,9 @@ function Login(props) {
         postData.password = password
         try {
             let res = await axios.post(reqUrl, postData)
-            if (res.data && res.data.email) {
-                dispatch(Actions.setUserData(res.data))
+            if (res.data && res.data.user && res.data.user.email) {
+                window.localStorage.setItem("token", res.data.token)
+                dispatch(Actions.setUserData(res.data.user))
                 props.history.push('/accountdashboard')
             } else {
                 alert(res.data.message)
