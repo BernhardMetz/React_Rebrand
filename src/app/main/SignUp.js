@@ -59,6 +59,7 @@ function SignUp(props) {
             let res = await axios.post(reqUrl, postData)
             if (res.data && res.data.email) {
                 props.history.push('/login')
+                alert("Successfully registered!")
             } else {
                 alert(res.data.message)
             } 
