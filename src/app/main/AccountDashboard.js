@@ -23,10 +23,12 @@ function AccountDashboard(props) {
                 if (res.data && res.data.user && res.data.user.email) {
                     return dispatch(Actions.setUserData(res.data.user))
                 } else {
+                    window.localStorage.removeItem('token')
                     props.history.push('/login')
                     alert(res.data.message)
                 } 
             } catch(err) {
+                window.localStorage.removeItem('token')
                 props.history.push('/login')
                 console.log(err)
                 alert("Auth issue! Please login again.")
