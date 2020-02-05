@@ -5,6 +5,10 @@ function Welcome(props) {
     function redirectToLogin(evt) {
         props.history.push('/login')
     }
+    
+    function redirectToSignUp(evt) {
+        props.history.push('/signup')
+    }
 
     return (
         <div>
@@ -56,7 +60,7 @@ function Welcome(props) {
                         </div>
                     </div>
                     <div className="line2"></div>
-                    <div className="button_order btn">
+                    <div className="button_order btn" onClick={redirectToSignUp}>
                         order now
                     </div>
                     <div className="clear">

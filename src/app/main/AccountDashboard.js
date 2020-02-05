@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
-function AccountDashboard() {
+function AccountDashboard(props) {
 
     const [tabIndex, setTabIndex] = useState(0)
-    const user = useSelector(state => state.user);
-    console.log(user)
+    const user = useSelector(state => state.user)
+    const [oldPass, setOldPass] = useState()
+    const [newPass, setNewPass] = useState()
+    const [newConfirm, setNewConfirm] = useState()
 
     function handleTab(evt) {
         if (evt.target.id === 'tab1') {
@@ -14,6 +17,39 @@ function AccountDashboard() {
             setTabIndex(1)
         } else if (evt.target.id === 'tab3') {
             setTabIndex(2)
+        }
+    }
+    function handleOldPassChange(evt) {
+        setOldPass(evt.target.value)
+    }
+    function handleNewPassChange(evt) {
+        setNewPass(evt.target.value)
+    }
+    function handleNewConfirmChange(evt) {
+        setNewConfirm(evt.target.value)
+    }
+    async function handleUpdatePass(evt) {
+        if (!oldPass || !newPass || !newConfirm || newPass !== newConfirm) {
+            alert("Please check your password carefully!")
+            return;
+        }
+        
+        const reqUrl = 'http://localhost:3001/api/user/updatepass'
+        let postData = {}
+        postData.email = user.email
+        postData.password = oldPass
+        postData.newpass =newPass
+        try {
+            let res = await axios.post(reqUrl, postData)
+            if (res.data && res.data.email) {
+                props.history.push('/login')
+                alert("Password has been reset")
+            } else {
+                alert(res.data.message)
+            } 
+        } catch(err) {
+            console.log(err)
+            alert("Failed to signup")
         }
     }
 
@@ -74,10 +110,10 @@ function AccountDashboard() {
                             <div>
                                 Change Password:
                             </div>
-                            <input type="text" placeholder="Current Password" />
-                            <input type="password" placeholder="New Password" />
-                            <input type="password" placeholder="Confirm New Password" />
-                            <div className="button_submit btn">
+                            <input type="text" placeholder="Current Password" onChange={handleOldPassChange}/>
+                            <input type="password" placeholder="New Password" onChange={handleNewPassChange}/>
+                            <input type="password" placeholder="Confirm New Password" onChange={handleNewConfirmChange}/>
+                            <div className="button_submit btn" onClick={handleUpdatePass}>
                                 Submit
                             </div>
                             <div className="clear">

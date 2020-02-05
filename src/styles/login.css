@@ -3,7 +3,7 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     padding:42px 50px;
-    margin-top:200px;
+    margin-top:150px;
 }
 .login_form input[type="text"], .login_form input[type="password"]{
     text-align: left;

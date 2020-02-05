@@ -1,19 +1,70 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
 
-function AccountDashboard() {
+function SignUp(props) {
 
-    const [tabIndex, setTabIndex] = useState(0)
-    const user = useSelector(state => state.user);
-    console.log(user)
+    const [firstName, setFirstName] = useState()
+    const [lastName, setLastName] = useState()
+    const [discordid, setDiscordId] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [confirm, setConfirm] = useState()
 
-    function handleTab(evt) {
-        if (evt.target.id === 'tab1') {
-            setTabIndex(0)
-        } else if (evt.target.id === 'tab2') {
-            setTabIndex(1)
-        } else if (evt.target.id === 'tab3') {
-            setTabIndex(2)
+    function redirectToLogin(evt) {
+        props.history.push('/login')
+    }
+    function handleFirstNameChange(evt) {
+        setFirstName(evt.target.value)
+    }
+    function handleLastNameChange(evt) {
+        setLastName(evt.target.value)
+    }
+    function handleDiscordIdChange(evt) {
+        setDiscordId(evt.target.value)
+    }
+    function handleEmailChange(evt) {
+        setEmail(evt.target.value)
+    }
+    function handlePassChange(evt) {
+        setPassword(evt.target.value)
+    }
+    function handleConfirmChange(evt) {
+        setConfirm(evt.target.value)
+    }
+    async function handleSignUp(evt) {
+        const re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!email || !re.test(String(email).toLowerCase())) {
+            alert("Invalid email type! Please check your email.")
+            return;
+        }
+
+        if (!password || !confirm || password !== confirm) {
+            alert("Please check your password carefully!")
+            return;
+        }
+        
+        if (!firstName || !lastName) {
+            alert("Kindly input your first/last name!")
+            return;
+        }
+
+        const reqUrl = 'http://localhost:3001/api/user/register'
+        let postData = {}
+        postData.firstname = firstName
+        postData.lastname = lastName
+        postData.discordid = discordid
+        postData.email = email
+        postData.password = password
+        try {
+            let res = await axios.post(reqUrl, postData)
+            if (res.data && res.data.email) {
+                props.history.push('/login')
+            } else {
+                alert(res.data.message)
+            } 
+        } catch(err) {
+            console.log(err)
+            alert("Failed to signup")
         }
     }
 
@@ -26,7 +77,7 @@ function AccountDashboard() {
             <div className="topbar">
                 <img className="brand" src="assets/images/logo.png" alt="logo"/>
                 
-                <div className="member btn">
+                <div className="member btn" onClick={redirectToLogin}>
                     Already A Member?
                 </div>
             </div>
@@ -43,33 +94,33 @@ function AccountDashboard() {
                             <div>
                                 First Name*
                             </div>
-                            <input type="text" placeholder="First Name" />
+                            <input type="text" placeholder="First Name" onChange={handleFirstNameChange}/>
 
                             <div className="mt">
                                 Last Name*
                             </div>
-                            <input type="text" placeholder="Last Name" />
+                            <input type="text" placeholder="Last Name" onChange={handleLastNameChange}/>
                             
                             <div className="mt">
                                 Discord Id
                             </div>
-                            <input type="text" placeholder="User#0001" />
+                            <input type="text" placeholder="User#0001" onChange={handleDiscordIdChange}/>
                             
                             <div className="mt">
                                 Email*
                             </div>
-                            <input type="text" placeholder="Example@Email.Com" />
+                            <input type="text" placeholder="Example@Email.Com" onChange={handleEmailChange}/>
                             
                             <div className="mt">
                                 Password*
                             </div>
-                            <input type="password" placeholder="Password" />
+                            <input type="password" placeholder="Password" onChange={handlePassChange}/>
                             
                             <div className="mt">
                                 Confirm Password*
                             </div>
-                            <input type="password" placeholder="Password" />
-                            <div className="button_submit btn">
+                            <input type="password" placeholder="Password" onChange={handleConfirmChange}/>
+                            <div className="button_submit btn" onClick={handleSignUp}>
                                 Purchase
                             </div>
                         </div>
@@ -82,4 +133,4 @@ function AccountDashboard() {
     );
 }
 
-export default AccountDashboard;
+export default SignUp;
