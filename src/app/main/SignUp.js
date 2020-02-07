@@ -50,7 +50,6 @@ function SignUp(props) {
         }
 
         const reqUrl = BACKEND_URL + '/api/user/register'
-        alert(reqUrl)
         let postData = {}
         postData.firstname = firstName
         postData.lastname = lastName
