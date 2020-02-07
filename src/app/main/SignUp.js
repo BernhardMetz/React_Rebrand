@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import BACKEND_URL from './Consts'
 
 function SignUp(props) {
 
@@ -48,7 +49,8 @@ function SignUp(props) {
             return;
         }
 
-        const reqUrl = 'http://localhost:3001/api/user/register'
+        const reqUrl = BACKEND_URL + '/api/user/register'
+        alert(reqUrl)
         let postData = {}
         postData.firstname = firstName
         postData.lastname = lastName

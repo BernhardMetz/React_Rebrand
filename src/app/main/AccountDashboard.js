@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import * as Actions from '../store/actions'; 
+import BACKEND_URL from './Consts'
 
 function AccountDashboard(props) {
 
@@ -15,7 +16,7 @@ function AccountDashboard(props) {
 
     async function initialize() {
         if (!user.email) {
-            const reqUrl = 'http://localhost:3001/api/user/me'
+            const reqUrl =BACKEND_URL+'/api/user/me'
             let postData = {}
             postData.token = window.localStorage.getItem('token')
             try {

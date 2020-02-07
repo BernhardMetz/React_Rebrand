@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as Actions from '../store/actions'; 
 import withReducer from '../store/withReducer';
 import reducer from '../store/reducers';
+import BACKEND_URL from './Consts'
 
 function Login(props) {
 
@@ -13,7 +14,7 @@ function Login(props) {
     const [password, setPassword] = useState()
 
     async function handleLogin(evt) {
-        const reqUrl = 'http://localhost:3001/api/login'
+        const reqUrl = BACKEND_URL + '/api/login'
         let postData = {}
         postData.email = email
         postData.password = password
