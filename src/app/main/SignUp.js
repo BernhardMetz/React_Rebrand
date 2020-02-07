@@ -14,6 +14,9 @@ function SignUp(props) {
     function redirectToLogin(evt) {
         props.history.push('/login')
     }
+    function redirectToWelcome(evt) {
+        props.history.push('/')
+    }
     function handleFirstNameChange(evt) {
         setFirstName(evt.target.value)
     }
@@ -77,7 +80,7 @@ function SignUp(props) {
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div className="topbar">
-                <img className="brand" src="assets/images/logo.png" alt="logo"/>
+                <img className="brand" src="assets/images/logo.png" alt="logo" onClick={redirectToWelcome}/>
                 
                 <div className="member btn" onClick={redirectToLogin}>
                     Already A Member?

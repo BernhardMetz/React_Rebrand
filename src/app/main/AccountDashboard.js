@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import * as Actions from '../store/actions'; 
+import * as Actions from '../store/actions';
 import BACKEND_URL from './Consts'
 
 function AccountDashboard(props) {
@@ -13,6 +13,10 @@ function AccountDashboard(props) {
     const [oldPass, setOldPass] = useState()
     const [newPass, setNewPass] = useState()
     const [newConfirm, setNewConfirm] = useState()
+
+    function redirectToWelcome(evt) {
+        props.history.push('/')
+    }
 
     async function initialize() {
         if (!user.email) {
@@ -90,7 +94,7 @@ function AccountDashboard(props) {
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div className="topbar">
-                <img className="brand" src="assets/images/logo.png" alt="logo"/>
+                <img className="brand" src="assets/images/logo.png" alt="logo" onClick={redirectToWelcome} />
                 
                 <div className="member btn">
                     Already A Member?

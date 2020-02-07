@@ -13,6 +13,10 @@ function Login(props) {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    function redirectToWelcome(evt) {
+        props.history.push('/')
+    }
+
     async function handleLogin(evt) {
         const reqUrl = BACKEND_URL + '/api/login'
         let postData = {}
@@ -48,7 +52,7 @@ function Login(props) {
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <div className="topbar">
-                <img className="brand" src="assets/images/logo.png" alt="logo"/>
+                <img className="brand" src="assets/images/logo.png" alt="logo" onClick={redirectToWelcome} />
             </div>
             <div className="container">
                 <div className="login_form">
