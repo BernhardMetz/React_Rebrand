@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import BACKEND_URL from './Consts'
+import { useDispatch } from 'react-redux';
+import * as Actions from '../store/actions'; 
 
 function SignUp(props) {
 
+    const dispatch = useDispatch();
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [discordid, setDiscordId] = useState()
@@ -52,7 +55,7 @@ function SignUp(props) {
             return;
         }
 
-        const reqUrl = BACKEND_URL + '/api/user/register'
+        let reqUrl = BACKEND_URL + '/api/user/register'
         let postData = {}
         postData.firstname = firstName
         postData.lastname = lastName
@@ -62,8 +65,18 @@ function SignUp(props) {
         try {
             let res = await axios.post(reqUrl, postData)
             if (res.data && res.data.email) {
-                props.history.push('/login')
-                alert("Successfully registered!")
+                reqUrl = BACKEND_URL + '/api/login'
+                postData.email = email
+                postData.password = password
+                res = await axios.post(reqUrl, postData)
+                if (res.data && res.data.user && res.data.user.email) {
+                    window.localStorage.setItem("token", res.data.token)
+                    dispatch(Actions.setUserData(res.data.user))
+                    props.history.push('/accountdashboard')
+                } else {
+                    alert(res.data.message)
+                } 
+                //alert("Successfully registered!")
             } else {
                 alert(res.data.message)
             } 
